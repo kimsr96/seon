@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  category    String
+  orderNum    Int
+  name        String
+  leader      String
+  submitDate  String?
+  presentDate String?
+  openDate    String?
+  cost        Float?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ExpectedProject {
+  id          Int      @id @default(autoincrement())
+  orderNum    Int
+  name        String?
+  client      String?
+  leader      String?
+  budget      Float?
+  planMonth   String?
+  serviceCost Float?
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Participant {
+  id        Int      @id @default(autoincrement())
+  name      String
+  role      String
+  company   String?
+  createdAt DateTime @default(now())
+}
+
+model WeeklyReport {
+  id        Int      @id @default(autoincrement())
+  title     String
+  startDate String
+  endDate   String?
+  createdAt DateTime @default(now())
+}
