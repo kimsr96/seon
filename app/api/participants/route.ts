@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
 export async function GET() {
-  const participants = await prisma.participant.findMany({ orderBy: { role: "asc" } });
+  const participants = await prisma.participant.findMany({ orderBy: [{ role: "asc" }, { name: "asc" }] });
   return Response.json(participants);
 }
 

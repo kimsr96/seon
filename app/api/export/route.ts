@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { supabase } from "@/lib/supabase";
 import { spawn } from "child_process";
 import path from "path";
 
@@ -28,9 +28,9 @@ async function runPython(scriptPath: string, input: string): Promise<Buffer> {
 }
 
 export async function GET() {
-  const [projects, participants] = await Promise.all([
-    prisma.project.findMany({ orderBy: [{ category: "asc" }, { orderNum: "asc" }] }),
-    prisma.participant.findMany({ orderBy: { role: "asc" } }),
+  const [{ data: projects }, { data: participants }] = await Promise.all([
+    supabase.from("Project").select("*").order("category", { ascending: true }).order("orderNum", { ascending: true }),
+    supabase.from("Participant").select("*").order("role", { ascending: true }),
   ]);
 
   const payload = JSON.stringify({ projects, participants });

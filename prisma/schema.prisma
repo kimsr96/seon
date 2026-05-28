@@ -18,6 +18,7 @@ model Project {
   openDate    String?
   cost        Float?
   notes       String?
+  weekLabel   String   @default("2026-W09")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -32,6 +33,7 @@ model ExpectedProject {
   planMonth   String?
   serviceCost Float?
   notes       String?
+  weekLabel   String   @default("2026-W09")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }

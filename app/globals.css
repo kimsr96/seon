@@ -1,12 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 
+/* ── Design Tokens ──────────────────────────────── */
 :root {
-  --background: #f8fafc;
-  --foreground: #1e293b;
+  --canvas:           #faf9f5;
+  --surface-card:     #efe9de;
+  --surface-soft:     #f5f0e8;
+  --surface-dark:     #181715;
+  --surface-dark-el:  #252320;
+  --hairline:         #e6dfd8;
+  --hairline-soft:    #ebe6df;
+
+  --ink:              #141413;
+  --body-strong:      #252523;
+  --body:             #3d3d3a;
+  --muted:            #6c6a64;
+  --muted-soft:       #8e8b82;
+  --on-dark:          #faf9f5;
+  --on-dark-soft:     #a09d96;
+
+  --primary:          #cc785c;
+  --primary-active:   #a9583e;
+  --accent-teal:      #5db8a6;
+  --accent-amber:     #e8a55a;
 }
 
+/* ── Base ─────────────────────────────────────── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: "Malgun Gothic", "Apple SD Gothic Neo", Arial, Helvetica, sans-serif;
+  background: var(--canvas);
+  color: var(--body);
+  font-family: 'Inter', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Display serif ────────────────────────────── */
+.font-display {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
 }

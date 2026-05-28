@@ -1,14 +1,13 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest } from "next/server";
 
-export async function GET() {
-  try {
-    const projects = await prisma.project.findMany({ orderBy: [{ category: "asc" }, { orderNum: "asc" }] });
-    return Response.json(projects);
-  } catch (e) {
-    const msg = e instanceof Error ? e.message : String(e);
-    return Response.json({ error: msg }, { status: 500 });
-  }
+export async function GET(req: NextRequest) {
+  const week = req.nextUrl.searchParams.get("week") ?? "2026-W09";
+  const projects = await prisma.project.findMany({
+    where: { weekLabel: week },
+    orderBy: [{ category: "asc" }, { orderNum: "asc" }],
+  });
+  return Response.json(projects);
 }
 
 export async function POST(req: NextRequest) {

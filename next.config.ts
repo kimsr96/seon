@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  turbopack: {
-    root: __dirname,
-  },
-};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const nextConfig: NextConfig = { experimental: { turbo: { enabled: false } } as any };
 
 export default nextConfig;
