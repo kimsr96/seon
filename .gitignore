@@ -25,4 +25,4 @@ prisma/dev.db
 prisma/dev.db-journal
 
 # Generated
-app/generated/
+.vercel
